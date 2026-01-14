@@ -267,6 +267,16 @@ Encapsulation occurs as data moves **down** the stack; decapsulation occurs as i
 ---
 
 ### Dumbed down notes for self
+
+#### Definitions 
+- `host` is any device that can send and receive traffic (request and response). It could be a smartphone, IOT, tablet, laptop etc. 
+- `server`, since a host can be any device by definition it can also be a client or a server (a server is just a computer that is configured to receive and send responses). 
+- `ip address`, every host has an IP address to uniquely identify them. So when a client is sending a request to a sever, both hosts' IP address are included. (just like how you would in a letter) 
+- `network`, in order for hosts to communicate with one another you would typically need to be connected to a network. A network is just a group of devices that are interconnected. - `switch` facilitates communication between hosts that are under the same network. 
+- `router` facilitates communication between hosts that are not under the same network. Every router has its own individual IP address set by the manufacturer. 
+- `sub-net`refer to networks inside of a network. 
+- `NAT` Network address translation, allows multiple devices on a private network using private IPs like 192.168.x.x to share a single public IP address when accessing the internet, conserving IPv4 addresses and providing security by hiding internal devices 
+- `private IP` unique identifier for devices in a local network for internal communication, assigned by router and not accessible from the public internet. These non-routable addresses (e.g. 192.168.x.x, 10.x.x.x) allow devices to talk to each other and the internet via NAT.
 ###### IP address
 Say for example -> `10.24.21.1`
 	It isn't randomly generated. Its a group of 32 bits that were split into octets (1 byte consists of 8 bits!). So `10011001100010100001001010100010` becomes `1001 1001 . 1000 1010 . 0001 0010. 1010 0010` and then... `x.x.x.x` 
