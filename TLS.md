@@ -337,3 +337,22 @@ Efficiency and security.
 | **ECDSA**     | ❌ No                          | ✅ Yes                       | **Signature Only** (Identity) |
 | **AES**       | ✅ Yes (Symmetric)             | ❌ No                        | **Bulk Data Transfer**        |
 |               |                               |                             |                               |
+
+In that `Client Hello`, there are actually **two different random things**, and they solve two different problems.
+
+### 1. The "Random Number" (The Nonce) -> Stops Replay Attacks
+
+Imagine you go to a coffee shop and tap your credit card to buy a $5 latte. A hacker stands next to you and **records** the electronic signal your card sent. He doesn't know how to decrypt it, he just records the "beeps and boops."
+
+The next day, he walks into the coffee shop, orders a latte, and plays back your recording.
+
+- **Without a Random Number:** The machine hears the exact same signal as yesterday, thinks it's you, and charges your account. The hacker gets free coffee. This is a **Replay Attack**.
+    
+- **With a Random Number:**
+    1. The machine sends a unique random number (e.g., "58291") to the card.
+    2. The card mixes that number into the encryption.
+    3. The next day, the machine sends a _new_ number (e.g., "99102").
+    4. The hacker plays back the old recording (which was built using "58291").
+    5. The machine sees the math doesn't match "99102" and rejects it.
+
+**The "Random Number" in TLS ensures that this conversation is happening _right now_ and isn't just a recording of a previous conversation.**
