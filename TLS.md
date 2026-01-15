@@ -329,3 +329,11 @@ Efficiency and security.
 - **RSA is slow.** It uses massive numbers (like 2048 bits or 4096 bits).
 - **ECC is fast.** It provides the _same_ security with tiny numbers (256 bits).
 - **The Split:** In TLS 1.3, we use the fast Specialist (**ECDHE**) to mix the paint (Key Exchange), and we use another Specialist (**ECDSA**) or the old Swiss Army Knife (**RSA**) just for the ID Card stamp.
+
+| **Algorithm** | **Can it Encrypt? (Privacy)** | **Can it Sign? (Identity)** | **Role in TLS 1.3**           |
+| ------------- | ----------------------------- | --------------------------- | ----------------------------- |
+| **RSA**       | ✅ Yes                         | ✅ Yes                       | **Signature Only** (Identity) |
+| **ECDHE**     | ✅ Yes (via Key Exchange)      | ❌ No                        | **Key Exchange** (Privacy)    |
+| **ECDSA**     | ❌ No                          | ✅ Yes                       | **Signature Only** (Identity) |
+| **AES**       | ✅ Yes (Symmetric)             | ❌ No                        | **Bulk Data Transfer**        |
+|               |                               |                             |                               |
